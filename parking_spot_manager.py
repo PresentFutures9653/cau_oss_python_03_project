@@ -63,6 +63,11 @@ def filter_by_location(spots, locations):
     # location[0]: 최저 위도, [1]: 최고 위도, [2]: 최저 경도, [3]: 최고 경도
 
 
+# parking_spot 객체 리스트 spots와 정렬 기준이 되는 정보명 keyword 입력받아 정렬된 객체 리스트 반환하는 함수.
+def sort_by_keyword(spots, keyword):
+    return sorted(spots, key=lambda x: x.get(keyword))
+
+
 # 각 단계별로 테스트 (테스트할때 주석해제 후 사용)
 if __name__ == '__main__':
     print("Testing the module...")

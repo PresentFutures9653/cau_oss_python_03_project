@@ -59,13 +59,12 @@ def start_process(path):
             else:
                 print("invalid input")
         elif select == 3:
-            keywords = ['name', 'city', 'district', 'ptype', 'latitude', 'longitude']
+            keywords = ['name', 'city', 'district', 'ptype', 'latitude', 'longitude']  # 정렬 시 기준 정보명 리스트
             print("---sort by---")
             print(keywords)
-            keyword = input('type keyword:')
-            if keyword in keywords:
-                print("not implemented yet")
-                # fill this block
+            keyword = input('type keyword:')  # 정렬 기준 입력
+            if keyword in keywords:  # 만약 keyword가 keywords 리스트 안에 있는, 유효한 값이면 실행
+                spots = psm.sort_by_keyword(spots, keyword)  # 정렬 함수
             else:
                 print("invalid input")
         elif select == 4:  # 4번 (exit) 고를 시 'Exit' 출력 후 반복문 종료.
