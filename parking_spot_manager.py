@@ -2,7 +2,7 @@ class parking_spot:
     # 생성자. 주차장 정보를 매개변수로 받아 self.__item 선언. 위도/경도 제외 모두 문자열.
     def __init__(self, name, city, district, ptype, longitude, latitude):
         self.__item = {'name': name,  # 자원명
-                       'city': city,  # 도시 이름
+                       'city': city,  # 도시명
                        'district': district,  # 시/군/구
                        'ptype': ptype,  # 주차장 유형
                        'longitude': float(longitude),  # 경도
@@ -34,6 +34,33 @@ def print_spots(spots):
 
     for data in spots:
         print(data.__str__())
+
+
+# 자원명에서 매개변수 name 문자열을 포함하는 모든 주차장 정보 필터링 후 리턴하는 함수.
+def filter_by_name(spots, name):
+    return [i for i in spots if name in i.get('name')]
+
+
+# 도시명에서 매개변수 city 문자열을 포함하는 모든 주차장 정보 필터링 후 리턴하는 함수.
+def filter_by_city(spots, city):
+    return [i for i in spots if city in i.get('city')]
+
+
+# 시/군/구에서 매개변수 district 문자열을 포함하는 모든 주차장 정보 필터링 후 리턴하는 함수.
+def filter_by_district(spots, district):
+    return [i for i in spots if district in i.get('district')]
+
+
+# 주차장유형에서 매개변수 name 문자열을 포함하는 모든 주차장 정보 필터링 후 리턴하는 함수.
+def filter_by_ptype(spots, ptype):
+    return [i for i in spots if ptype in i.get('ptype')]
+
+
+# locations 튜플 속 최저/최고 위도/경도 사이의 위도/경도를 가지는 모든 주차장 정보 필터링 후 리턴하는 함수.
+def filter_by_location(spots, locations):
+    return [i for i in spots if locations[0] < i.get('latitude') < locations[1] \
+            and locations[2] < i.get('longitude') < locations[3]]
+    # location[0]: 최저 위도, [1]: 최고 위도, [2]: 최저 경도, [3]: 최고 경도
 
 
 # 각 단계별로 테스트 (테스트할때 주석해제 후 사용)

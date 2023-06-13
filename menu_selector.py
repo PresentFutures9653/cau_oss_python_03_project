@@ -19,28 +19,35 @@ def start_process(path):
             psm.print_spots(spots)  # spots 리스트에서 각 parking_spot 객체 속 주차장 정보(self.__item) 출력
             # fill this block
         elif select == 2:
-            print("---filter by---")
+            print("---filter by---")  # 필터링 기준 정보 선택
             print("[1] name")
             print("[2] city")
             print("[3] district")
             print("[4] ptype")
             print("[5] location")
             select = int(input('type:'))
-            if select == 1:
+            if select == 1:  # 자원명 기준 필터링
                 keyword = input('type name:')
-                print("not implemented yet")
+                spots = psm.filter_by_name(spots, keyword)
                 # fill this block
-            elif select == 2:
+            elif select == 2:  # 도시명 기준 필터링
                 keyword = input('type city:')
-                print("not implemented yet")
+                spots = psm.filter_by_city(spots, keyword)
                 # fill this block
-            elif select == 3:
+            elif select == 3:  # 시/군/구 기준 필터링
                 keyword = input('type district:')
-                print("not implemented yet")
+                spots = psm.filter_by_district(spots, keyword)
                 # fill this block
-            elif select == 4:
+            elif select == 4:  # 주차장유형 기준 필터링
                 keyword = input('type ptype:')
-                print("not implemented yet")
+                spots = psm.filter_by_ptype(spots, keyword)
+                # fill this block
+            elif select == 5:  # 좌표(위도/경도) 기준 필터링
+                min_lat = float(input('type min lat:'))  # 최저 위도 입력
+                max_lat = float(input('type max lat:'))  # 최고 위도 입력
+                min_lon = float(input('type min long:'))  # 최저 경도 입력
+                max_lon = float(input('type max long:'))  # 최고 경도 입력
+                spots = psm.filter_by_location(spots, (min_lat, max_lat, min_lon, max_lon))
                 # fill this block
             elif select == 5:
                 min_lat = float(input('type min lat:'))
